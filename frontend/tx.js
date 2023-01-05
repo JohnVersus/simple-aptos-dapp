@@ -5,10 +5,10 @@ const sendTx = async () => {
   const address =
     "0x17099e697e0ca0426b18c69a57fd715a5830538387933b13e470adff9f8e1c49";
   const transaction = {
-    arguments: [address, "717"],
+    arguments: [address, 1 * 10e7],
     function: "0x1::coin::transfer",
     type: "entry_function_payload",
-    type_arguments: ["0x1::aptos_coin::TestCoin"],
+    type_arguments: ["0x1::aptos_coin::AptosCoin"],
   };
 
   try {

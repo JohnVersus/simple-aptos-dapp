@@ -12,7 +12,7 @@ const signAndVerify = async (message) => {
   try {
     const response = await window.aptos.signMessage({
       message,
-      nonce: Math.ceil(Math.random() * 100000),
+      nonce: Math.ceil(Math.random() * 10e7),
       application: true,
       address: true,
       chainId: true,
