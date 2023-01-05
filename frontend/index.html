@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Aptos Dapp</h1>
+    <h2>Wallet Interaction</h2>
+    <h3>
+      - Connection
+      <button onclick="connect()" id="connectButton">
+        Connect to Petra Wallet
+      </button>
+      <button onclick="disconnect()" id="disconnectButton" disabled>
+        Disconnect
+      </button>
+    </h3>
+    <h3>
+      - Transaction
+      <button onclick="sendTx()" id="txButton">Send Transaction</button>
+    </h3>
+    <i id="walletInfo"></i>
+  </body>
+  <script src="/frontend/index.js" defer></script>
+  <script src="/frontend/tx.js" defer></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/tweetnacl/1.0.2/nacl-fast.min.js"
+    integrity="sha512-aLSwsdjU35MF6PERT7Pic3+X6qL7O+Us8hYQl/gjrPoV4JXUNoCF2Ys3/vfJSiBW1QNxz2WTr4tEo5VcOdHt/g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="https://bundle.run/buffer@6.0.3"></script>
+</html>
