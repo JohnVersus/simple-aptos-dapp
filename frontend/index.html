@@ -11,7 +11,7 @@
     <h2>Wallet Interaction</h2>
     <h3>
       - Connection
-      <button onclick="connect()" id="connectButton">
+      <button onclick="connect()" id="connectButton" disabled>
         Connect to Petra Wallet
       </button>
       <button onclick="disconnect()" id="disconnectButton" disabled>
@@ -20,12 +20,31 @@
     </h3>
     <h3>
       - Transaction
+      <input id="receiversAddress" placeholder="Receivers Address " />
+      <input id="transferValue" type="number" step="0.01" min="0.01" placeholder="Transfer value"></input>
       <button onclick="sendTx()" id="txButton">Send Transaction</button>
+    </h3>
+    <h3>
+      - Current Wallet Account:      
+    </h3>
+    <i id="activeAccount"></i>
+    <h3>
+      - Current Network:
+      <u>
+        <i id="networkName"></i>
+      </u>
+    </h3>
+    <br/>
+    <br/>
+    <br/>
+    <h3>
+      - Authenticated Account:      
     </h3>
     <i id="walletInfo"></i>
   </body>
   <script src="/frontend/index.js" defer></script>
   <script src="/frontend/tx.js" defer></script>
+  <script src="/frontend/events.js" defer></script>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/tweetnacl/1.0.2/nacl-fast.min.js"
     integrity="sha512-aLSwsdjU35MF6PERT7Pic3+X6qL7O+Us8hYQl/gjrPoV4JXUNoCF2Ys3/vfJSiBW1QNxz2WTr4tEo5VcOdHt/g=="
