@@ -13,12 +13,18 @@ const updateAccountUi = (account) => {
 };
 
 const initNetwork = async (wallet) => {
-  let network = await wallet.network();
+  let network = await wallet.network().catch((error) => {
+    console.log(error);
+    return "Error: " + error.message;
+  });
   updateNetworkUi(network);
 };
 
 const initAccount = async (wallet) => {
-  let currentAccount = await wallet.account();
+  let currentAccount = await wallet.account().catch((error) => {
+    console.log(error);
+    return "Error: " + error.message;
+  });
   updateAccountUi(currentAccount);
 };
 
@@ -26,15 +32,20 @@ window.onload = () => {
   const wallet = getAptosWallet();
   initNetwork(wallet);
   initAccount(wallet);
-  // event listener for network changing
-  wallet.onNetworkChange((network) => {
-    console.log("Current Network: ", network.networkName);
-    updateNetworkUi(network.networkName);
-  });
+  try {
+    // event listener for network changing
+    wallet.onNetworkChange((network) => {
+      console.log("Current Network: ", network.networkName);
+      updateNetworkUi(network.networkName);
+    });
 
-  // event listener for disconnecting
-  wallet.onAccountChange((newAccount) => {
-    // currentAccount = wallet.connect();
-    updateAccountUi(newAccount);
-  });
+    // event listener for disconnecting
+    wallet.onAccountChange((newAccount) => {
+      // currentAccount = wallet.connect();
+      updateAccountUi(newAccount);
+      initNetwork(wallet);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
