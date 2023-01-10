@@ -14,16 +14,16 @@ const updateAccountUi = (account) => {
 
 const initNetwork = async (wallet) => {
   let network = await wallet.network().catch((error) => {
-    console.log(error);
-    return "Error: " + error.message;
+    console.log("initNetwork Error: ", error.message);
+    return "No Active Connection";
   });
   updateNetworkUi(network);
 };
 
 const initAccount = async (wallet) => {
   let currentAccount = await wallet.account().catch((error) => {
-    console.log(error);
-    return "Error: " + error.message;
+    console.log("initAccount Error: ", error.message);
+    return "No Active Connection";
   });
   updateAccountUi(currentAccount);
 };

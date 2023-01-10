@@ -54,6 +54,9 @@ const connect = async () => {
     localStorage.setItem("userAccount", JSON.stringify(account));
 
     refreshUi();
+    // defined in event.js file
+    initNetwork(wallet);
+    initAccount(wallet);
   } catch (error) {
     // { code: 4001, message: "User rejected the request."}
     console.log(error);
@@ -89,9 +92,19 @@ const refreshUi = () => {
 
 const disconnect = async () => {
   const wallet = getAptosWallet();
-  await wallet.disconnect();
-  localStorage.setItem("userAccount", "{}");
-  refreshUi();
+  try {
+    await wallet.disconnect();
+    localStorage.setItem("userAccount", "{}");
+    refreshUi();
+    // defined in event.js file
+    initNetwork(wallet);
+    initAccount(wallet);
+  } catch (error) {
+    console.log(error.message);
+    alert(
+      "You can only disconnect from connected wallet. Change wallet account to disconnect"
+    );
+  }
 };
 
 const init = async () => {
